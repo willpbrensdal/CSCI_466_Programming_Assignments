@@ -1,9 +1,9 @@
-from network import Router, Host
-from link import Link, LinkLayer
+from network.network_1 import Router, Host
 import threading
 from time import sleep
 import sys
 from copy import deepcopy
+from link.link_1 import Link, LinkLayer
 
 ##configuration parameters
 router_queue_size = 0 #0 means unlimited
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     
     #create routers and routing tables for connected clients (subnets)
     encap_tbl_D = {}    # table used to encapsulate network packets into MPLS frames
-    frwd_tbl_D = {}     # table used to forward MPLS frames
+    frwd_tbl_D = {(None, 0): ('1', 1)}     # table used to forward MPLS frames
     decap_tbl_D = {}    # table used to decapsulate network packets from MPLS frames
     router_a = Router(name='RA', 
                               intf_capacity_L=[500,500],
